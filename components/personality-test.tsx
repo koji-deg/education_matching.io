@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ChevronDown, ChevronUp } from "lucide-react"
+import Image from "next/image"
+
 
 // Questions data
 const questions = [
@@ -197,18 +199,10 @@ const mbtiData = {
     learningStyle: "現実的で秩序を重んじるISTJタイプは、明確な手順や具体的な例を好みます。",
     description: "正義感の強い優等生",
     celebrities: [
-      {
-        name: "マイケル・ジョーダン",
-        books: ["勝利への情熱", "リーダーシップの真髄", "チームワークの力"]
-      },
-      {
-        name: "伊達公子",
-        books: ["テニスと私", "努力の価値", "規律ある生活"]
-      },
-      {
-        name: "クイーン・エリザベス2世",
-        books: ["王室の伝統", "国家と責任", "変わりゆく時代での統治"]
-      }
+      {'name': '渋沢栄一', 'books': ['論語（四書五経）', '孟子（四書五経）', '日本外史']},
+  {'name': '本田宗一郎', 'books': ['ざっくばらん', '私の手が語る', '松明は自分の手で']},
+  {'name': 'Warren Buffett',
+   'books': ['いま、翔び立つとき', 'SHOE DOG', '人と企業はどこで間違えるのか?---成功と失敗の本質を探る']}
     ]
   },
   ISFJ: {
@@ -216,18 +210,15 @@ const mbtiData = {
     learningStyle: "他者への貢献を重視するISFJタイプは、学習内容が誰かの役に立つことを理解するとモチベーションが上がります。",
     description: "温厚で思いやりのある守護者",
     celebrities: [
-      {
-        name: "ビヨンセ",
-        books: ["音楽への情熱", "家族の絆", "自己表現の力"]
-      },
-      {
-        name: "宮崎駿",
-        books: ["アニメーション芸術論", "想像力の源泉", "自然との共生"]
-      },
-      {
-        name: "マザー・テレサ",
-        books: ["愛の奉仕", "慈悲の心", "平和への道"]
-      }
+      {'name': '黒柳徹子', 'books': ['窓ぎわのトットちゃん', 'トットちゃんとソウくんの戦争', '小さいころに置いてきたもの']},
+  {'name': 'Rosa Parks',
+   'books': ['ローザ・パークス自伝 「人権運動の母」が歩んだ勇気と自由への道',
+    '勇気と希望: ローザ・パークスのことば',
+    '黒人の誇り・人間の誇り: ローザ・パークス自伝']},
+  {'name': 'Gabrielle Chasnel',
+   'books': ['ココとリトル・ブラック・ドレス',
+    'COCO(ココ)はとびきりかわったコ',
+    'ココ・シャネル 20世紀ファッションの創造者']}
     ]
   },
   INFJ: {
@@ -235,18 +226,10 @@ const mbtiData = {
     learningStyle: "深い洞察力を持つINFJタイプは、抽象的な概念や内省する時間を必要とします。",
     description: "心の強さを兼ね備えた仕事人",
     celebrities: [
-      {
-        name: "マーティン・ルーサー・キング・ジュニア",
-        books: ["非暴力の哲学", "夢を追いかけて", "社会正義の実現"]
-      },
-      {
-        name: "夏目漱石",
-        books: ["こころ", "私の個人主義", "文学論"]
-      },
-      {
-        name: "ガンジー",
-        books: ["真理の実験", "非暴力抵抗", "簡素な生活"]
-      }
+      {'name': '手塚治虫', 'books': ['BLACK JACK', '火の鳥', 'ブッダ']},
+  {'name': '宮沢賢治', 'books': ['銀河鉄道の夜', '注文の多い料理店', '新編 風の又三郎']},
+  {'name': 'Martin Luther King Jr.',
+   'books': ['黒人の進む道――世界は一つの屋根のもとに', '良心のトランペット', '黒人はなぜ待てないか']}
     ]
   },
   INTJ: {
@@ -254,18 +237,9 @@ const mbtiData = {
     learningStyle: "戦略的思考が得意なINTJタイプは、複雑な理論や自主的な学習を好みます。",
     description: "探究熱心な努力家",
     celebrities: [
-      {
-        name: "イーロン・マスク",
-        books: ["持続可能なエネルギーの未来", "火星移住計画", "AI革命"]
-      },
-      {
-        name: "岡本太郎",
-        books: ["今日の芸術", "自分の中に毒を持て", "芸術は爆発だ"]
-      },
-      {
-        name: "ニコラ・テスラ",
-        books: ["エネルギーの秘密", "未来の科学", "発明家の心"]
-      }
+      {'name': '宮崎駿', 'books': ['トム・ソーヤーの冒険', 'ロビンソン・クルーソー', 'ホビットの冒険']},
+  {'name': '村上春樹', 'books': ['グレート・ギャツビー', 'ライ麦畑でつかまえて']},
+  {'name': 'Elon Musk', 'books': ['スティーブ・ジョブズ', 'ゼロ・トゥ・ワン', 'ゲーム・プレイヤー']}
     ]
   },
   ISTP: {
@@ -273,18 +247,11 @@ const mbtiData = {
     learningStyle: "実践的な問題解決を好むISTPタイプは、手を動かして学ぶことで理解が深まります。",
     description: "寡黙で個人主義な職人",
     celebrities: [
-      {
-        name: "クリント・イーストウッド",
-        books: ["映画監督術", "西部劇の魅力", "俳優としての心得"]
-      },
-      {
-        name: "宮本武蔵",
-        books: ["五輪書", "剣の哲学", "人生の極意"]
-      },
-      {
-        name: "ブルース・リー",
-        books: ["截拳道の真髄", "東洋哲学と武術", "自己表現としての格闘技"]
-      }
+      {'name': '高田純次', 'books': ['適当教典', '適当日記', '適当論']},
+  {'name': '長嶋茂雄',
+   'books': ['野球は人生そのものだ', '野球へのラブレター', '人生の知恵袋: ミスターと7人の水先案内人']},
+  {'name': 'Bruce Lee',
+   'books': ['截拳道への道', 'ブルース・リーノーツ: 内なる戦士をめぐる哲学断章', '真珠湾最後の真実']}
     ]
   },
   ISFP: {
@@ -292,18 +259,10 @@ const mbtiData = {
     learningStyle: "芸術的な感性を持つISFPタイプは、クリエイティブな要素を取り入れた学習に興味を持ちます。",
     description: "感情豊かなあっさり芸術家",
     celebrities: [
-      {
-        name: "マイケル・ジャクソン",
-        books: ["ダンスの革命", "音楽と社会変革", "パフォーマンスの芸術"]
-      },
-      {
-        name: "黒澤明",
-        books: ["映画作りの実践", "日本文化と映画", "視覚的ストーリーテリング"]
-      },
-      {
-        name: "オードリー・ヘプバーン",
-        books: ["優雅な生き方", "人道支援の意義", "内なる美しさ"]
-      }
+      {'name': '米津玄師', 'books': ['岡崎に捧ぐ', 'グラップラー刃牙', 'スノードーム']},
+  {'name': 'Michael Jackson', 'books': ['老人と海', 'ピーター・パンとウェンディ']},
+  {'name': 'Bob Dylan',
+   'books': ['はじまりの日', 'ボブ・ディラン自伝', 'The Lyrics 1961-1973']}
     ]
   },
   INFP: {
@@ -311,18 +270,9 @@ const mbtiData = {
     learningStyle: "理想主義的なINFPタイプは、自分の価値観と結びついた学習に熱心になります。",
     description: "独特のオーラを放つ理想主義者",
     celebrities: [
-      {
-        name: "ウィリアム・シェイクスピア",
-        books: ["ソネット集", "劇作の技法", "人間性の探求"]
-      },
-      {
-        name: "村上春樹",
-        books: ["物語のつくり方", "翻訳という冒険", "走ることについて語るときに僕の語ること"]
-      },
-      {
-        name: "J.R.R.トールキン",
-        books: ["ファンタジー世界の創造", "言語と神話", "中世文学の魅力"]
-      }
+      {'name': '新海誠', 'books': ['火星の人', '三体', '四月になれば彼女は']},
+  {'name': '星野源', 'books': ['四月になれば彼女は', '東京の夫婦', '歌うように伝えたい']},
+  {'name': 'J.R.R. Tolkien', 'books': ['指輪物語', 'シルマリルの物語', '終わらざりし物語']}
     ]
   },
   INTP: {
@@ -330,18 +280,9 @@ const mbtiData = {
     learningStyle: "分析的なINTPタイプは、理論的な内容や探求する自由を求めます。",
     description: "知的で個人主義なアイディアマン",
     celebrities: [
-      {
-        name: "アルバート・アインシュタイン",
-        books: ["相対性理論入門", "科学と宗教", "創造性の源泉"]
-      },
-      {
-        name: "川端康成",
-        books: ["美しい日本の私", "文学の本質", "東洋と西洋の美意識"]
-      },
-      {
-        name: "ビル・ゲイツ",
-        books: ["テクノロジーと社会", "イノベーションの鍵", "慈善活動の意義"]
-      }
+      {'name': '大前研一', 'books': ['企業参謀―戦略的思考とはなにか', '考える技術', '「0から1」の発想術']},
+  {'name': '茂木健一郎', 'books': ['さよなら、野口健', '熱帯の夢', 'こきゅうの本']},
+  {'name': 'Bill Gates', 'books': ['サピエンス全史', 'アインシュタイン その生涯と宇宙']}
     ]
   },
   ESTP: {
@@ -349,18 +290,12 @@ const mbtiData = {
     learningStyle: "行動的なESTPタイプは、即時的なフィードバックが得られるアクティブな学習を好みます。",
     description: "冒険心旺盛なアクションメーカー",
     celebrities: [
-      {
-        name: "マドンナ",
-        books: ["自己表現の芸術", "女性のエンパワーメント", "音楽ビジネスの真実"]
-      },
-      {
-        name: "石原さとみ",
-        books: ["女優としての心得", "美しさの秘訣", "キャリアと私生活のバランス"]
-      },
-      {
-        name: "ドナルド・トランプ",
-        books: ["ディールの技術", "不動産投資戦略", "ブランド構築の秘訣"]
-      }
+      {'name': '落合陽一', 'books': ['ノヴァセン', '教育の超・人類史', '孫子']},
+  {'name': '武井壮', 'books': ['渋谷で働く社長の告白', '魔法の世紀', 'だから、俺はプロレスで夢を追う！']},
+  {'name': 'Donald Trump',
+   'books': ['あなたに金持ちになってほしい',
+    'トランプ思考―知られざる逆転の成功哲学 [新版]明日の成功者たちへ',
+    'トランプ最強の人生戦略']}
     ]
   },
   ESFP: {
@@ -368,18 +303,10 @@ const mbtiData = {
     learningStyle: "社交的なESFPタイプは、楽しくインタラクティブな学習環境で力を発揮します。",
     description: "楽しいことが大好きなリア充自由人",
     celebrities: [
-      {
-        name: "マリリン・モンロー",
-        books: ["スターの作り方", "内なる輝き", "ハリウッドの真実"]
-      },
-      {
-        name: "明石家さんま",
-        books: ["笑いの哲学", "トーク術の極意", "エンターテインメントの世界"]
-      },
-      {
-        name: "ウィル・スミス",
-        books: ["俳優としての成長", "家族と成功", "ポジティブシンキングの力"]
-      }
+      {'name': '綾瀬はるか', 'books': ['愛するということ', '鹿男あをによし', 'お～い！竜馬']},
+  {'name': '大泉洋', 'books': ['騙し絵の牙', '大泉エッセイ ~僕が綴った16年', '夢の中まで語りたい']},
+  {'name': 'Elvis Presley',
+   'books': ['ELVISを夢見て―日本の中のプレスリー伝説', '私のエルヴィス', 'エルヴィスの真実 ゴスペルを愛したプレスリー']}
     ]
   },
   ENFP: {
@@ -387,18 +314,10 @@ const mbtiData = {
     learningStyle: "創造的なENFPタイプは、新しいアイデアや可能性を探求する学習に魅力を感じます。",
     description: "コミュ力高めな素直主義者",
     celebrities: [
-      {
-        name: "ロビン・ウィリアムズ",
-        books: ["コメディの技法", "即興の魔術", "笑いと涙の人生"]
-      },
-      {
-        name: "久石譲",
-        books: ["映画音楽の世界", "感動を生み出す旋律", "創造性と直感"]
-      },
-      {
-        name: "エレン・デジェネレス",
-        books: ["笑顔の力", "LGBTQの権利", "キンドネスの重要性"]
-      }
+      {'name': '有吉弘行', 'books': ['ゴミ清掃員の日常', '愚連街', 'キングダム']},
+  {'name': '西野亮廣', 'books': ['ファンベース', '嫌われる勇気', 'クラウドソーシングでビジネスはこう変わる']},
+  {'name': 'Robin Williams',
+   'books': ['ノンデザイナーズ・デザインブック', '英国王立園芸協会ガーデンデザインブック', 'グッド・ウィル・ハンティング']}
     ]
   },
   ENTP: {
@@ -406,18 +325,11 @@ const mbtiData = {
     learningStyle: "独創的なENTPタイプは、議論や問題解決を通じて学ぶことを楽しみます。",
     description: "陽キャで賢い変わり者",
     celebrities: [
-      {
-        name: "スティーブ・ジョブズ",
-        books: ["イノベーションの哲学", "デザイン思考", "プレゼンテーションの技術"]
-      },
-      {
-        name: "堀江貴文",
-        books: ["多角経営の戦略", "挑戦する勇気", "未来を創る思考法"]
-      },
-      {
-        name: "レオナルド・ダ・ヴィンチ",
-        books: ["芸術と科学の融合", "観察の技術", "創造性の秘密"]
-      }
+      {'name': '堀江貴文',
+   'books': ['魔法の世紀', '嫌われる勇気', '30歳で400億円の負債を抱えた僕が、もう一度、起業を決意した理由']},
+  {'name': 'ひろゆき',
+   'books': ['サードドア―精神的資産のふやし方', 'コンテナ物語：世界を変えたのは「箱」の発明だった', '五輪書']},
+  {'name': 'Steve Wozniak', 'books': ['Appleのデジタル教育', 'サードドア: 精神的資産のふやし方']}
     ]
   },
   ESTJ: {
@@ -425,18 +337,13 @@ const mbtiData = {
     learningStyle: "組織的なESTJタイプは、明確な構造と実用性を持つ学習環境を好みます。",
     description: "ストイックで堅実な生徒会長",
     celebrities: [
-      {
-        name: "ジョージ・W・ブッシュ",
-        books: ["リーダーシップの試練", "決断の瞬間", "国家運営の要諦"]
-      },
-      {
-        name: "舛添要一",
-        books: ["政治家の責務", "行政改革の道筋", "国際関係の展望"]
-      },
-      {
-        name: "ヴィンス・ロンバルディ",
-        books: ["勝利への執念", "チーム統率術", "規律と成功の関係"]
-      }
+      {'name': '出井伸之',
+   'books': ['変わり続ける―――人生のリポジショニング戦略',
+    '迷いと決断',
+    '進化するプラットフォーム グーグル・アップル・アマゾンを超えて']},
+  {'name': '麻生太郎', 'books': ['とてつもない日本', '自由と繁栄の弧', '麻生太郎の原点 祖父・吉田茂の流儀']},
+  {'name': 'Henry Ford',
+   'books': ['自動車王フォードが語るエジソン成功の法則', '藁のハンドル―ヘンリー・フォード自伝', 'フォード経営―フォードは語る']}
     ]
   },
   ESFJ: {
@@ -444,18 +351,10 @@ const mbtiData = {
     learningStyle: "協力的なESFJタイプは、チームワークや他者への貢献を重視します。",
     description: "誰にでも心優しき世話焼きさん",
     celebrities: [
-      {
-        name: "テイラー・スウィフト",
-        books: ["歌詞の書き方", "ファンとの絆", "音楽業界でのサバイバル"]
-      },
-      {
-        name: "綾瀬はるか",
-        books: ["女優としての成長", "健康と美の秘訣", "ポジティブな生き方"]
-      },
-      {
-        name: "ビル・クリントン",
-        books: ["政治とリーダーシップ", "グローバル課題への取り組み", "人々をつなぐ力"]
-      }
+      {'name': 'ビートたけし（北野武）', 'books': ['現場者', 'マボロシの鳥', '赤めだか']},
+  {'name': '和田アキ子', 'books': ['おとなの叱り方', '啓示', '5年目のハイヒール']},
+  {'name': 'Bill Clinton',
+   'books': ['人として正しいことを', 'The President Is Missing: A Novel', 'My Life']}
     ]
   },
   ENFJ: {
@@ -463,18 +362,12 @@ const mbtiData = {
     learningStyle: "指導力のあるENFJタイプは、他者を導くことで自身も学びます。",
     description: "周りを笑顔にするカリスマリーダー",
     celebrities: [
-      {
-        name: "オプラ・ウィンフリー",
-        books: ["自己実現の道", "影響力の使い方", "逆境からの学び"]
-      },
-      {
-        name: "坂本龍馬",
-        books: ["明治維新の夢", "変革者の思考", "日本の未来像"]
-      },
-      {
-        name: "バラク・オバマ",
-        books: ["希望の政治学", "人種と社会", "アメリカンドリームの再定義"]
-      }
+      {'name': '明石家さんま', 'books': ['陽性', '晴れときどき西川家', 'クリスマスには焼き魚にローソクを']},
+  {'name': 'Barack Obama', 'books': ['LIFE3.0', 'FACTFULNESS', '世界と僕のあいだに']},
+  {'name': 'Oprah Winfrey',
+   'books': ['I Know Why the Caged Bird Sings',
+    'The Hill We Climb: An Inaugural Poem for the Country',
+    'What I Know for Sure']}
     ]
   },
   ENTJ: {
@@ -482,18 +375,9 @@ const mbtiData = {
     learningStyle: "リーダーシップ志向のENTJタイプは、目標達成に向けた戦略的な学習を好みます。",
     description: "天性のカリスマリーダー",
     celebrities: [
-      {
-        name: "スティーブ・ジョブズ",
-        books: ["ビジョナリーリーダーシップ", "イノベーションの哲学", "完璧を追求する姿勢"]
-      },
-      {
-        name: "孫正義",
-        books: ["300年ビジョン", "起業家精神", "テクノロジーと未来"]
-      },
-      {
-        name: "マーガレット・サッチャー",
-        books: ["鉄の女の信念", "経済改革の道筋", "政治とリーダーシップ"]
-      }
+      {'name': '孫正義', 'books': ['成功はゴミ箱の中に', 'ユダヤの商法', '竜馬がゆく']},
+  {'name': 'Steve Jobs', 'books': ['白鯨', '肩をすくめるアトラス', 'イノベーションのジレンマ']},
+  {'name': 'Margaret Thatcher', 'books': ['国富論', '自由論']}
     ]
   },
 }
@@ -547,15 +431,28 @@ export function PersonalityTest() {
     if (mbtiData[result as keyof typeof mbtiData]) {
       const { characteristics, learningStyle, description, celebrities } = mbtiData[result as keyof typeof mbtiData]
       return (
-        <Card className="w-full max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
+      <div className="flex items-center justify-center min-h-screen" style={{
+      backgroundImage: `url('/blurry-gradient-haikei.svg')`, // publicフォルダへの相対パス
+      backgroundSize: 'cover',
+    }}>  
+      <Card className="w-full max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold text-primary">あなたのMBTIタイプは: {result}</CardTitle>
+            <CardTitle className="text-3xl font-bold text-primary">あなたの性格タイプは: {result}</CardTitle>
             <CardDescription className="text-lg">あなたの性格タイプの特徴と、同じタイプの有名人、おすすめの書籍をご紹介します。</CardDescription>
           </CardHeader>
           <CardContent className="space-y-8">
             <div className="text-center">
               <h3 className="text-2xl font-semibold mb-2 text-primary">{result}</h3>
               <p className="text-xl text-muted-foreground">{description}</p>
+            </div>
+            <div className="flex justify-center">
+              <Image
+                src={`/${result}.jpg`}
+                alt={`${result}タイプのイメージ図`}
+                width={300}
+                height={300}
+                className="rounded-lg shadow-md"
+              />
             </div>
             <div className="bg-card p-6 rounded-lg shadow">
               <h3 className="text-xl font-semibold mb-3 text-primary">タイプの特徴:</h3>
@@ -566,47 +463,56 @@ export function PersonalityTest() {
               <p className="text-card-foreground">{learningStyle}</p>
             </div>
             <div className="bg-card p-6 rounded-lg shadow">
-              <h3 className="text-xl font-semibold mb-4 text-primary">同じタイプの有名人:</h3>
-              <ul className="space-y-6">
-                {celebrities.map((celebrity, index) => (
-                  <li key={index} className="border-b border-border pb-4 last:border-b-0">
-                    <p className="font-medium text-lg text-card-foreground">{celebrity.name}</p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleBooks(celebrity.name)}
-                      aria-expanded={openBooks[celebrity.name]}
-                      aria-controls={`books-${index}`}
-                      className="mt-2"
-                    >
-                      {openBooks[celebrity.name] ? (
-                        <>
-                          おすすめ書籍を隠す
-                          <ChevronUp className="ml-2 h-4 w-4" />
-                        </>
-                      ) : (
-                        <>
-                          この人のおすすめの書籍は？
-                          <ChevronDown className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                    {openBooks[celebrity.name] && (
-                      <ul id={`books-${index}`} className="mt-3 ml-6 list-disc text-card-foreground">
-                        {celebrity.books.map((book, bookIndex) => (
-                          <li key={bookIndex} className="mt-1">{book}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
+  <h3 className="text-xl font-semibold mb-4 text-primary">同じタイプの有名人:</h3>
+  <ul className="space-y-6">
+    {celebrities.map((celebrity, index) => (
+      <li key={index} className="border-b border-border pb-4 last:border-b-0 flex items-center">
+        {/* 画像を追加 */}
+        <img 
+          src={`${celebrity.name}.jfif`} 
+          alt={celebrity.name} 
+          className="w-12 h-12 mr-4 rounded-full object-cover"
+        />
+        <div>
+          <p className="font-medium text-lg text-card-foreground">{celebrity.name}</p>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toggleBooks(celebrity.name)}
+            aria-expanded={openBooks[celebrity.name]}
+            aria-controls={`books-${index}`}
+            className="mt-2"
+          >
+            {openBooks[celebrity.name] ? (
+              <>
+                おすすめ書籍を隠す
+                <ChevronUp className="ml-2 h-4 w-4" />
+              </>
+            ) : (
+              <>
+                この人のおすすめの書籍は？
+                <ChevronDown className="ml-2 h-4 w-4" />
+              </>
+            )}
+          </Button>
+          {openBooks[celebrity.name] && (
+            <ul id={`books-${index}`} className="mt-3 ml-6 list-disc text-card-foreground">
+              {celebrity.books.map((book, bookIndex) => (
+                <li key={bookIndex} className="mt-1">{book}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
           </CardContent>
           <CardFooter className="flex justify-center">
             <Button onClick={resetTest} size="lg" className="mt-4">もう一度診断する</Button>
           </CardFooter>
         </Card>
+        </div>
       )
     } else {
       return (
@@ -623,23 +529,37 @@ export function PersonalityTest() {
     }
   }
 
-  return (
+return (
+  <div className="flex items-center justify-center min-h-screen" style={{
+      backgroundImage: `url('/blurry-gradient-haikei.svg')`, // publicフォルダへの相対パス
+      backgroundSize: 'cover',
+    }}>
     <Card className="w-full max-w-3xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-primary">質問 {currentQuestion + 1} / {questions.length}</CardTitle>
+        <CardTitle className="text-2xl font-bold text-primary">
+          【性格タイプ診断】 質問 {currentQuestion + 1} / {questions.length}
+        </CardTitle>
         <CardDescription className="text-lg">{questions[currentQuestion].text}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <Progress value={progress} className="w-full" />
         <div className="flex flex-col space-y-4">
-          <Button onClick={() => handleAnswer("A")} className="text-left justify-start py-6 text-lg hover:bg-primary/90 transition-colors">
+          <Button
+            onClick={() => handleAnswer("A")}
+            className="text-left justify-start py-6 text-lg hover:bg-primary/90 transition-colors"
+          >
             A: {questions[currentQuestion].options.A}
           </Button>
-          <Button onClick={() => handleAnswer("B")} className="text-left justify-start py-6 text-lg hover:bg-primary/90 transition-colors">
+          <Button
+            onClick={() => handleAnswer("B")}
+            className="text-left justify-start py-6 text-lg hover:bg-primary/90 transition-colors"
+          >
             B: {questions[currentQuestion].options.B}
           </Button>
         </div>
       </CardContent>
     </Card>
-  )
+  </div>
+);
+
 }
