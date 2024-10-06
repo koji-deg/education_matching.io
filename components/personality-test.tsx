@@ -471,10 +471,21 @@ export function PersonalityTest() {
         <img 
           src={`${celebrity.name}.jfif`} 
           alt={celebrity.name} 
-          className="w-12 h-12 mr-4 rounded-full object-cover"
+          className="w-24 h-24 mr-4 rounded-full object-cover"
         />
         <div>
-          <p className="font-medium text-lg text-card-foreground">{celebrity.name}</p>
+          <p className="font-medium text-2xl text-card-foreground flex items-center">
+            {celebrity.name}
+            {/* Wikipedia検索ボタンを追加 */}
+            <a 
+              href={`https://ja.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(celebrity.name)}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="ml-4 inline-flex items-center px-2 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-white bg-blue-300 hover:bg-blue-200"
+            >
+              Wikipedia
+            </a>
+          </p>
           <Button
             variant="outline"
             size="sm"
@@ -498,7 +509,18 @@ export function PersonalityTest() {
           {openBooks[celebrity.name] && (
             <ul id={`books-${index}`} className="mt-3 ml-6 list-disc text-card-foreground">
               {celebrity.books.map((book, bookIndex) => (
-                <li key={bookIndex} className="mt-1">{book}</li>
+                <li key={bookIndex} className="mt-1 flex items-center">
+                  {book}
+                  {/* Amazon検索ボタンを追加 */}
+                  <a 
+                    href={`https://www.amazon.co.jp/s?k=${encodeURIComponent(book)}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="ml-4 inline-flex items-center px-2 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-white bg-gray-400 hover:bg-gray-300"
+                  >
+                    Amazon
+                  </a>
+                </li>
               ))}
             </ul>
           )}
@@ -507,6 +529,9 @@ export function PersonalityTest() {
     ))}
   </ul>
 </div>
+
+
+
           </CardContent>
           <CardFooter className="flex justify-center">
             <Button onClick={resetTest} size="lg" className="mt-4">もう一度診断する</Button>
