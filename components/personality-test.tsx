@@ -300,12 +300,6 @@ extra: [
     characteristics: "独創的な思考の持ち主で、高い基準を持つ。自分の能力と知識に自信を持っている。",
     learningStyle: "戦略的思考が得意なINTJタイプは、複雑な理論や自主的な学習を好みます。",
     description: "探究熱心な努力家",
-    celebrities: [
-      {'name': '宮崎駿', 'books': ['トム・ソーヤーの冒険', 'ロビンソン・クルーソー', 'ホビットの冒険']},
-  {'name': '村上春樹', 'books': ['グレート・ギャツビー', 'ライ麦畑でつかまえて']},
-  {'name': 'Elon Musk', 'books': ['スティーブ・ジョブズ', 'ゼロ・トゥ・ワン', 'ゲーム・プレイヤー']}
-    ]
-  },
 
   howTo: [
     {'how':'学習計画の立案: ', 'how_description': 'SMARTゴールを設定し、詳細なスケジュールを作成します。これにより効率的な学習が可能になります。'},
@@ -324,6 +318,14 @@ extra: [
     {'title': '社会人向け短時間学習ツール・サービスの紹介', 'extraLink':'https://www.genspark.ai/spark?id=8ea9aa02-c681-41ff-860e-e16664351b33'},
     {'title': '隙間時間に学べるおすすめのビジネス系YouTubeチャンネル', 'extraLink':'https://www.genspark.ai/spark?id=9e1f6c22-216b-4f86-ac65-dcd8081f8b80'}
 ],
+
+    celebrities: [
+      {'name': '宮崎駿', 'books': ['トム・ソーヤーの冒険', 'ロビンソン・クルーソー', 'ホビットの冒険']},
+  {'name': '村上春樹', 'books': ['グレート・ギャツビー', 'ライ麦畑でつかまえて']},
+  {'name': 'Elon Musk', 'books': ['スティーブ・ジョブズ', 'ゼロ・トゥ・ワン', 'ゲーム・プレイヤー']}
+    ]
+  },
+
 
 
   ISTP: {
